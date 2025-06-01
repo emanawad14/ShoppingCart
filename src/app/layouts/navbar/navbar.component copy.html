@@ -1,6 +1,5 @@
 
 
-
  <nav class=" bg-[#F6F6F6] border-0 fixed top-0 z-40 right-0 left-0 rounded">
 
     <div class="max-w-screen-xl   flex flex-wrap  items-center  justify-between mx-auto p-1">
@@ -29,7 +28,7 @@
                   </li>
                 <li>
                     <a routerLink="/product" routerLinkActive="bg-[#8B5E35] rounded text-white" 
-               
+                    [routerLinkActiveOptions]="{exact:true}"
                      class="block  text-[#9D9DAA]  py-2 px-3  ms-4 text-[14px] " aria-current="page"> products 
                         </a>
                   </li>
@@ -56,7 +55,7 @@
         </ul>
         <ul class="capitalize ms-auto font-medium flex flex-col p-4 md:p-0 mt-4 border    md:flex-row items-center md:space-x-1 rtl:space-x-reverse md:mt-0 md:border-0 ">
           
-            @if ( !isLogin) 
+            @if (! isLogin) 
             {
 
                 <li>
@@ -77,13 +76,13 @@
                 <li>
                     <a  routerLink="/wishlist" class="block relative ms-1 text-[14px] py-2 px-3 me-3  text-[#8B5E35] "   routerLinkActive="  " aria-current="page"> 
                         <i class="fas fa-cart fa-heart text-[15px]"></i>
-                       
+                        <span class="absolute top-0 left-0 bg-yellow-100 text-yellow-900 text-xs font-medium me-2 px-1 py-0.2 rounded-sm dark:bg-yellow-900 dark:text-yellow-300">{{countWish()}}</span>
                         </a>
                   </li>
                 <li>
                     <a  routerLink="/cart" class="block relative ms-1 text-[14px] py-2 px-3 me-3  text-[#8B5E35] "   routerLinkActive="  " aria-current="page"> 
                         <i class="fas fa-cart fa-cart-shopping text-[15px]"></i>
-                       
+                        <span class="absolute top-0 left-0 bg-yellow-100 text-yellow-900 text-xs font-medium me-2 px-1 py-0.2 rounded-sm dark:bg-yellow-900 dark:text-yellow-300">{{countitem()}}</span>
                         </a>
                   </li>
                
@@ -91,7 +90,7 @@
                 <li>
                     <a 
                     role="button"
-                  
+                    (click)="signOut()"
                     
                     class="block py-2 px-3 text-[#8B5E35] rounded  ms-1 text-[14px] me-6 text-3xl  md:p-0 " aria-current="page">
                     <i class="fa-solid fa-user text-[15px]"></i> </a>
