@@ -1,1 +1,158 @@
-<p>services works!</p>
+<section class="py-5 mb-3">
+  <div
+    class="main w-full h-[70vh] flex flex-col justify-center items-center text-center px-4"
+  >
+    <h1
+      class="text-white text-[28px] sm:text-[32px] md:text-[36px] lg:text-[40px] font-bold leading-snug"
+    >
+      Discover Fashion That Speaks To You.
+    </h1>
+    <p
+      class="text-white text-[16px] sm:text-[18px] md:text-[20px] font-medium mt-4 max-w-3xl"
+    >
+      Explore a range of high-quality, affordable furniture designed to transform any room. Discover the
+      perfect blend of style, comfort, and functionality for your space.
+    </p>
+    <button
+      class="border border-white text-white py-2 px-6 sm:px-8 mt-6 rounded-full hover:bg-white hover:text-[#5AC8E1] transition-all duration-300"
+    >
+      See more
+    </button>
+  </div>
+</section>
+
+<br>
+<section class="bg-[#F9F9F9] py-10 px-4">
+  <p class="mb-1 text-[#9B7E5C] text-center font-bold uppercase tracking-wide">Top Products</p>
+  <h1 class="text-center text-[24px] sm:text-[28px] md:text-[30px] font-bold text-[#090F41] py-3">
+    Top Picks For You!
+  </h1>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6">
+    @for (cat of Categories; track cat._id) {
+      <div
+        data-aos="flip-left"
+        data-aos-offset="300"
+        data-aos-easing="ease-in-sine"
+        class="w-full max-w-sm mx-auto bg-white border border-gray-200 rounded-xl shadow-sm dark:bg-gray-800 dark:border-gray-700 transition-all duration-300 hover:shadow-md"
+      >
+        <div class="relative">
+          <img
+            class="h-[230px] w-full object-contain rounded-t-xl"
+            [src]="cat.image"
+            alt="product image"
+          />
+          <i
+            class="fa-regular fa-heart absolute top-3 left-3 text-[#9B7E5C] text-[16px] bg-white p-1 rounded-full shadow-sm"
+          ></i>
+        </div>
+
+        <div class="p-4 space-y-2">
+          <h5 class="text-sm text-[#090F41] font-semibold truncate dark:text-white">
+            {{ cat.name.split(' ', 2).join(' ') }}
+          </h5>
+
+          <div class="flex items-center justify-between text-sm">
+            <span class="text-[#090F41] font-semibold">
+              <i class="fas fa-star text-yellow-500"></i> 4.8
+              <span class="text-gray-400 text-xs">(500+)</span>
+            </span>
+            <span
+              class="text-[#8B5E35] text-xl dark:text-white cursor-pointer hover:text-[#A67C52]"
+              ><i class="fa-solid fa-cart-plus"></i></span
+            >
+          </div>
+
+          <div class="flex items-center justify-between">
+            <span
+              class="bg-yellow-100 text-yellow-800 text-xs font-medium px-3 py-1 rounded-sm dark:bg-yellow-900 dark:text-yellow-300"
+              >{{ cat.createdAt | date }}</span
+            >
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</section>
+
+
+
+<section class="py-10 px-4">
+  <h1 class="text-center text-[24px] sm:text-[28px] md:text-[30px] font-bold text-[#9B7E5C] py-3">Sub Of Category</h1>
+
+  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 justify-items-center">
+    @for (cat of subCategorirs; track cat._id) {
+      <div
+        class="w-[120px] h-[120px] sm:w-[140px] sm:h-[140px] flex items-center justify-center text-center p-3 bg-white border border-gray-200 rounded-full shadow-sm dark:bg-gray-800 dark:border-gray-700 hover:shadow-md transition"
+      >
+        <h5 class="text-sm text-[#090F41] font-bold dark:text-white">
+          {{ cat.name }}
+        </h5>
+      </div>
+    }
+  </div>
+</section>
+
+
+
+
+
+
+
+<br>
+<section class="bg-[#F6F6F6] py-10 px-4">
+  <div class="max-w-7xl mx-auto">
+    <h1 class="text-[#8B5E35] text-center italic text-lg sm:text-xl mb-2">Services</h1>
+    <h2 class="text-[22px] sm:text-[26px] md:text-[30px] font-bold text-[#090F41] text-center leading-snug">
+      Benefits when using <br class="hidden sm:block"> Our Services.
+    </h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+      <div class="bg-white rounded-xl shadow p-6" data-aos="zoom-in-up" data-aos-duration="1000">
+        <span class="mb-4 text-3xl text-[#8B5E35] block"><i class="fa-solid fa-lightbulb"></i></span>
+        <h3 class="text-[#090F41] text-[20px] font-semibold mb-2">Inspiration</h3>
+        <p class="text-sm text-[#9D9DAA]">Lorem ipsum dolor sit amet consectetur. Est vel risus hendrerit laoreet purus malesuada dignissim.</p>
+      </div>
+
+      <div class="bg-white rounded-xl shadow p-6" data-aos="zoom-in-up" data-aos-duration="1000">
+        <span class="mb-4 text-3xl text-[#8B5E35] block"><i class="fa-solid fa-headphones"></i></span>
+        <h3 class="text-[#090F41] text-[20px] font-semibold mb-2">24/7 Customer Serv</h3>
+        <p class="text-sm text-[#9D9DAA]">Lorem ipsum dolor sit amet consectetur. Est vel risus hendrerit laoreet purus malesuada dignissim.</p>
+      </div>
+
+      <div class="bg-white rounded-xl shadow p-6" data-aos="zoom-in-up" data-aos-duration="1000">
+        <span class="mb-4 text-3xl text-[#8B5E35] block"><i class="fa-solid fa-truck-fast"></i></span>
+        <h3 class="text-[#090F41] text-[20px] font-semibold mb-2">Express Shipping</h3>
+        <p class="text-sm text-[#9D9DAA]">Lorem ipsum dolor sit amet consectetur. Est vel risus hendrerit laoreet purus malesuada dignissim.</p>
+      </div>
+
+      <div class="bg-white rounded-xl shadow p-6" data-aos="zoom-in-up" data-aos-duration="1000">
+        <span class="mb-4 text-3xl text-[#8B5E35] block"><i class="fa-solid fa-hand-holding-heart"></i></span>
+        <h3 class="text-[#090F41] text-[20px] font-semibold mb-2">Holding Heart</h3>
+        <p class="text-sm text-[#9D9DAA]">Lorem ipsum dolor sit amet consectetur. Est vel risus hendrerit laoreet purus malesuada dignissim.</p>
+      </div>
+
+      <div class="bg-white rounded-xl shadow p-6" data-aos="zoom-in-up" data-aos-duration="1000">
+        <span class="mb-4 text-3xl text-[#8B5E35] block"><i class="fa-solid fa-snowflake"></i></span>
+        <h3 class="text-[#090F41] text-[20px] font-semibold mb-2">Snowflake</h3>
+        <p class="text-sm text-[#9D9DAA]">Lorem ipsum dolor sit amet consectetur. Est vel risus hendrerit laoreet purus malesuada dignissim.</p>
+      </div>
+
+      <div class="bg-white rounded-xl shadow p-6" data-aos="zoom-in-up" data-aos-duration="1000">
+        <span class="mb-4 text-3xl text-[#8B5E35] block"><i class="fa-solid fa-gem"></i></span>
+        <h3 class="text-[#090F41] text-[20px] font-semibold mb-2">Gifting Me</h3>
+        <p class="text-sm text-[#9D9DAA]">Lorem ipsum dolor sit amet consectetur. Est vel risus hendrerit laoreet purus malesuada dignissim.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+

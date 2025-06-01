@@ -1,1 +1,143 @@
-<p>about works!</p>
+
+
+<section class="bg-[#F6F6F6] px-4 md:px-8 lg:px-16 py-10">
+  <div class="container mx-auto">
+    <!-- Breadcrumb -->
+    <ul class="flex flex-wrap items-center text-sm text-[#9D9DAA] my-20 mb-10">
+      <li>
+        <a routerLink="/home" routerLinkActive="text-[#8B5E35]" class="text-[#8B5E35] font-bold px-2">
+          Home
+        </a>
+      </li>
+      <li>
+        <i class="fa-solid fa-chevron-right px-2 text-[#9D9DAA]"></i>
+      </li>
+      <li>
+        <a routerLink="/aboutus" routerLinkActive="text-[#8B5E35]" class="px-2">
+          About Us
+        </a>
+      </li>
+    </ul>
+
+    <!-- Main Content Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+      <!-- Left Text Content -->
+      <div class="bg-white p-6 md:p-10 shadow rounded-lg">
+        <h2 class="text-[#8B5E35] text-3xl md:text-5xl mb-4 font-bold">
+          <i class="fa-solid fa-quote-left"></i>
+        </h2>
+        <p class="text-sm md:text-base text-[#9D9DAA] mb-6 leading-relaxed">
+          We are glad to present you our most perfect Shopify theme, which supports Sections Everywhere,
+          very high metric support scores by Google Page Speed Insight. This is the most mobile-oriented
+          theme with sections that will be convenient on any of your mobile devices.
+        </p>
+        <span class="text-[#090F41] text-base md:text-lg font-bold">Jack Donowan</span>
+      </div>
+
+      <!-- Right Image -->
+      <div class="w-full">
+        <img
+          src="/images/close-up-woman-posing-studio.jpg"
+          alt="Team Member"
+          class="w-full h-auto object-cover rounded-2xl"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
+  @for (item of brands; track item._id) {
+    <div
+      class="w-full max-w-sm mx-auto bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300"
+      data-aos="fade-up-right"
+      data-aos-offset="300"
+      data-aos-easing="ease-in-sine"
+    >
+      <a class="relative block">
+        <img
+          class="h-[150px] w-full object-contain rounded-t-lg"
+          [src]="item.image"
+          [alt]="item.name"
+        />
+        <i class="fa-regular fa-heart absolute top-3 left-3 text-[#9B7E5C] text-lg"></i>
+      </a>
+
+      <div class="p-4">
+        <h5 class="text-center text-sm text-[#090F41] font-bold dark:text-white truncate">
+          {{ item.name }}
+        </h5>
+      </div>
+    </div>
+  }
+</div>
+
+
+
+
+
+<section class="py-20 bg-[#F6F6F6]">
+  <div class="container mx-auto px-4">
+    <h1 class="text-center text-[#090F41] text-[30px] md:text-[36px] font-bold mb-3">
+      A Few Words About Us
+    </h1>
+    <p class="text-center text-[14px] md:text-[16px] text-[#9D9DAA] mb-10">
+      Make Your Best moments more stylish with our latest design of clothing.
+    </p>
+
+    <!-- Section 1 -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mb-20">
+      <div>
+        <img src="/images/Group 2167.png" alt="About Us Image 1" class="w-full rounded-lg" />
+      </div>
+      <div>
+        <h2 class="text-[#090F41] text-[24px] md:text-[27px] font-bold mb-4">Why choose us?</h2>
+        <p class="text-[14px] text-[#9D9DAA] leading-relaxed">
+          Maecenas congue metus id turpis iaculis mattis. Sed pellentesque id arcu id scelerisque.
+          Ut ullamcorper rutrum justo, at blandit eros maximus ut. Integer non tincidunt justo.
+          Rhoncus aenean venenatis sed purpoused ac solutions. Nullam mauris risus, commodo et luctus
+          rutrum, lobortis sed mauris. Integer congue, sem elementum varius tristique.
+        </p>
+      </div>
+    </div>
+
+    <!-- Section 2 -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mb-20">
+      <div>
+        <h2 class="text-[#090F41] text-[24px] md:text-[27px] font-bold mb-4">Trusted Online Shopping</h2>
+        <p class="text-[14px] text-[#9D9DAA] leading-relaxed">
+          Maecenas congue metus id turpis iaculis mattis. Sed pellentesque id arcu id scelerisque.
+          Ut ullamcorper rutrum justo, at blandit eros maximus ut. Integer non tincidunt justo.
+          Rhoncus aenean venenatis sed purpoused ac solutions. Nullam mauris risus, commodo et luctus
+          rutrum, lobortis sed mauris. Integer congue, sem elementum varius tristique.
+        </p>
+      </div>
+      <div>
+        <img src="/images/Group 2169.png" alt="About Us Image 2" class="w-full rounded-lg" />
+      </div>
+    </div>
+
+    <!-- Section 3 -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+      <div>
+        <img src="/images/Group 2168.png" alt="About Us Image 3" class="w-full rounded-lg" />
+      </div>
+      <div>
+        <h2 class="text-[#090F41] text-[24px] md:text-[27px] font-bold mb-4">Trusted Online Shopping</h2>
+        <p class="text-[14px] text-[#9D9DAA] leading-relaxed">
+          Maecenas congue metus id turpis iaculis mattis. Sed pellentesque id arcu id scelerisque.
+          Ut ullamcorper rutrum justo, at blandit eros maximus ut. Integer non tincidunt justo.
+          Rhoncus aenean venenatis sed purpoused ac solutions. Nullam mauris risus, commodo et luctus
+          rutrum, lobortis sed mauris. Integer congue, sem elementum varius tristique.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
