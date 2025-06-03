@@ -1,1 +1,134 @@
-<p>register works!</p>
+
+<div class="min-h-screen flex flex-col lg:flex-row items-center justify-center my-4">
+  <div class="flex flex-col lg:flex-row bg-[#F6F6F6] shadow-lg rounded-lg overflow-hidden my-9 w-full max-w-6xl">
+    
+    <!-- Left side (Form) -->
+    <div class="w-full lg:w-1/2 p-8">
+      <h1 class="mb-3 text-[30px] font-bold">Create an Account</h1>
+      <p class="mb-3 text-[12px] text-[#9D9DAA]">Create a new account</p>
+      <form class="w-full" [formGroup]="RegisterForm" (ngSubmit)="submitForm()">
+        <!-- Name -->
+        <div class="mb-6">
+          <label for="name" class="block mb-2 text-sm font-medium text-gray-900">User Name</label>
+          <input formControlName="name" type="text" id="name"
+            class="bg-gray-50 border border-gray-300 text-gray-700 text-sm rounded-lg focus:ring-[#9B7E5C] focus:border-[#9B7E5C] block w-full p-2.5">
+          <!-- Error messages -->
+          @let conteolName = RegisterForm.get('name');
+          @if (conteolName?.errors && conteolName?.touched) {
+            <div class="mt-2 text-sm text-white bg-[#8B5E35] p-2 rounded-lg">
+              <ul class="list-disc list-inside">
+                @if (conteolName?.getError('required')) {
+                  <li>Name is required</li>
+                }
+                @else if (conteolName?.getError('minlength')) {
+                  <li>Name minimum length is 3</li>
+                }
+                @else if (conteolName?.getError('maxlength')) {
+                  <li>Name maximum length is 20</li>
+                }
+              </ul>
+            </div>
+          }
+        </div>
+
+        <!-- Email -->
+        <div class="mb-6">
+          <label for="email" class="block mb-2 text-sm font-medium text-gray-900">E-mail</label>
+          <input formControlName="email" type="email" id="email"
+            class="bg-gray-50 border border-gray-300 text-gray-700 text-sm rounded-lg focus:ring-[#9B7E5C] focus:border-[#9B7E5C] block w-full p-2.5">
+          @let controlemail = RegisterForm.get('email');
+          @if (controlemail?.errors && controlemail?.touched) {
+            <div class="mt-2 text-sm text-white bg-[#8B5E35] p-2 rounded-lg">
+              <ul class="list-disc list-inside">
+                @if (controlemail?.getError('required')) {
+                  <li>Email is required</li>
+                }
+                @else if (controlemail?.getError('email')) {
+                  <li>Email is invalid</li>
+                }
+              </ul>
+            </div>
+          }
+        </div>
+
+        <!-- Password -->
+        <div class="mb-6">
+          <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Password</label>
+          <input formControlName="password" type="password" id="password"
+            class="bg-gray-50 border border-gray-300 text-gray-700 text-sm rounded-lg focus:ring-[#9B7E5C] focus:border-[#9B7E5C] block w-full p-2.5">
+          @let controlPassword = RegisterForm.get('password');
+          @if (controlPassword?.errors && controlPassword?.touched) {
+            <div class="mt-2 text-sm text-white bg-[#8B5E35] p-2 rounded-lg">
+              <ul class="list-disc list-inside">
+                @if (controlPassword?.getError('required')) {
+                  <li>Password is required</li>
+                }
+                @else if (controlPassword?.getError('pattern')) {
+                  <li>Password is invalid</li>
+                }
+              </ul>
+            </div>
+          }
+        </div>
+
+        <!-- RePassword -->
+        <div class="mb-6">
+          <label for="rePassword" class="block mb-2 text-sm font-medium text-gray-900">Confirm Password</label>
+          <input formControlName="rePassword" type="password" id="rePassword"
+            class="bg-gray-50 border border-gray-300 text-gray-700 text-sm rounded-lg focus:ring-[#9B7E5C] focus:border-[#9B7E5C] block w-full p-2.5">
+          @if (RegisterForm.getError('mismatch')) {
+            <div class="mt-2 text-sm text-white bg-[#8B5E35] p-2 rounded-lg">
+              <ul class="list-disc list-inside">
+                <li>Password confirmation is incorrect</li>
+              </ul>
+            </div>
+          }
+        </div>
+
+        <!-- Phone -->
+        <div class="mb-6">
+          <label for="phone" class="block mb-2 text-sm font-medium text-gray-900">Phone</label>
+          <input formControlName="phone" type="tel" id="phone"
+            class="bg-gray-50 border border-gray-300 text-gray-700 text-sm rounded-lg focus:ring-[#9B7E5C] focus:border-[#9B7E5C] block w-full p-2.5">
+          @let controlPhone = RegisterForm.get('phone');
+          @if (controlPhone?.errors && controlPhone?.touched) {
+            <div class="mt-2 text-sm text-white bg-[#8B5E35] p-2 rounded-lg">
+              <ul class="list-disc list-inside">
+                @if (controlPhone?.getError('required')) {
+                  <li>Phone is required</li>
+                }
+                @else if (controlPhone?.getError('pattern')) {
+                  <li>Phone is invalid</li>
+                }
+              </ul>
+            </div>
+          }
+        </div>
+
+        <!-- Submit button -->
+        <div class="text-center">
+          <button class="bg-[#8B5E35] w-full rounded-full py-2 text-white font-medium">
+            Sign Up
+            @if (isLoading) {
+              <i class="fas fa-spinner fa-spin ml-2"></i>
+            }
+          </button>
+
+          @if (isSuccess) {
+            <p class="bg-green-600 text-white mt-3 py-2 px-4 rounded">{{ isSuccess }}</p>
+          }
+
+          @if (ErrorMsg) {
+            <p class="bg-red-500 text-white mt-3 py-2 px-4 rounded">{{ ErrorMsg }}</p>
+          }
+        </div>
+      </form>
+    </div>
+
+    <!-- Right side (Image) -->
+   <div class="w-full lg:w-1/2 h-64 lg:h-auto">
+      <img src="/images/unsplash_SXck496Sg54.png" alt="Login Image"
+        class="w-full h-full object-cover">
+    </div>
+  </div>
+</div>

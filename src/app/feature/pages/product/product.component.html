@@ -1,1 +1,63 @@
-<p>product works!</p>
+
+
+<section class="py-10 px-4">
+  <!-- Section Header -->
+  <p class="mb-1 text-[#9B7E5C] text-center font-bold">Top Products</p>
+  <h1 class="text-center text-[24px] sm:text-[28px] md:text-[30px] font-bold text-[#090F41] py-3">
+    Top Picks For You!
+  </h1>
+
+  <!-- Search Box -->
+  <div class="mb-6">
+    <input
+      [(ngModel)]="test"
+      type="search"
+      class="block w-full max-w-xl mx-auto px-4 py-3 text-sm text-[#090F41] border border-gray-300 rounded-full focus:ring-gray-600 focus:border-gray-400 placeholder:text-[#9B7E5C]"
+      placeholder="Search by name..."
+    />
+  </div>
+
+  <!-- Product Grid -->
+  <div class=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    @for (item of products | search:test | paginate: { itemsPerPage: 8, currentPage: p }; track item.id) {
+      <div class=" bg-white border border-gray-200 rounded shadow-sm dark:bg-gray-800 dark:border-gray-700 transition ">
+       <a class="block relative overflow-hidden group">
+  <img
+    [src]="item.imageCover"
+    alt="product image"
+    class="w-full h-[250px] object-contain cursor-pointer rounded-t-lg transform group-hover:scale-105 transition-transform duration-300"
+  />
+</a>
+
+        <div class="p-4">
+          <!-- Title -->
+          <h5 class="text-sm mb-2 text-[#090F41] font-bold dark:text-white">
+            {{ item.title.split(' ', 2).join(' ') }}
+          </h5>
+
+          <!-- Rating -->
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-[#090F41] text-sm font-bold">
+              <i class="fas fa-star text-yellow-500"></i> {{ item.ratingsAverage }}
+            </span>
+          </div>
+
+          <!-- Price & Cart -->
+          <div class="flex items-center justify-between">
+            <span class="bg-yellow-100 text-yellow-800 text-xs font-bold px-3 py-1 rounded dark:bg-yellow-900 dark:text-yellow-300">
+              ${{ item.price }}
+            </span>
+            <span class="text-2xl text-[#8B5E35] hover:text-[#6b4b2a] dark:text-white cursor-pointer">
+              <i class="fa-solid fa-cart-plus"></i>
+            </span>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+
+  <!-- Centered Pagination -->
+  <div class="container mx-auto mt-8 flex justify-center">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</section>

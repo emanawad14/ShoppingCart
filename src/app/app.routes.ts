@@ -40,6 +40,9 @@ export const routes: Routes =
         {
             path:'cart' , loadComponent:()=>import('./feature/pages/cart/cart.component').then((c)=>c.CartComponent) , title:'cart'
         },
+        {
+            path:'forgetpassword' , loadComponent:()=>import('./feature/pages/forgetpassword/forgetpassword.component').then((c)=>c.ForgetpasswordComponent) , title:'forgetpassword'
+        },
        
         
 

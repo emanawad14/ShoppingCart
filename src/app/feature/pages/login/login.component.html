@@ -1,1 +1,100 @@
-<p>login works!</p>
+
+
+<div class="min-h-screen flex items-center justify-center my-4">
+  <div class="flex flex-col md:flex-row bg-[#F6F6F6] shadow-lg rounded-lg overflow-hidden my-10 w-full max-w-5xl">
+    
+    <!-- Form Section -->
+    <div class="w-full md:w-1/2 p-8">
+      <h1 class="mb-3 text-[30px] text-[#090F41] font-bold">Welcome Back!</h1>
+      <p class="mb-3 text-[12px] text-[#9D9DAA]">Please login or sign up to continue our app</p>
+
+      <form class="w-full mx-auto" [formGroup]="loginForm" (ngSubmit)="submitForm()">
+        
+        <!-- Email Input -->
+        <div class="mb-6">
+          <label for="email" class="block mb-2 text-[17px] font-medium text-[#090F41]">E-mail</label>
+          <input formControlName="email" type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-700 text-sm rounded-lg focus:ring-[#9B7E5C] focus:border-[#9B7E5C] block w-full p-2.5">
+          
+          @let controlemail = loginForm.get('email');
+          @if (controlemail?.errors && controlemail?.touched) {
+            <div class="flex p-2 mt-4 text-sm text-white rounded-lg bg-[#8B5E35]" role="alert">
+              <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+              </svg>
+              <div>
+                <ul class="mt-1.5 list-disc list-inside">
+                  @if (controlemail?.getError('required')) {
+                    <li>Email is required</li>
+                  }
+                  @else if (controlemail?.getError('email')) {
+                    <li>Email is invalid</li>
+                  }
+                </ul>
+              </div>
+            </div>
+          }
+        </div>
+
+        <!-- Password Input -->
+        <div class="mb-6">
+          <label for="password" class="block mb-2 text-[17px] font-medium text-[#090F41]">User password</label>
+          <input formControlName="password" type="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-700 text-sm rounded-lg focus:ring-[#9B7E5C] focus:border-[#9B7E5C] block w-full p-2.5">
+          
+          @let controlPassword = loginForm.get('password');
+          @if (controlPassword?.errors && controlPassword?.touched) {
+            <div class="flex p-2 mt-4 text-sm text-white rounded-lg bg-[#8B5E35]" role="alert">
+              <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+              </svg>
+              <div>
+                <ul class="mt-1.5 list-disc list-inside">
+                  @if (controlPassword?.getError('required')) {
+                    <li>Password is required</li>
+                  }
+                  @else if (controlPassword?.getError('pattern')) {
+                    <li>Password is invalid</li>
+                  }
+                </ul>
+              </div>
+            </div>
+          }
+        </div>
+
+        <!-- Remember & Forget -->
+        <div class="flex justify-between items-center mb-4">
+          <div class="flex items-center">
+            <input id="link-checkbox" type="checkbox" class="w-4 h-4 text-[#9B7E5C] bg-gray-100 border-[#9B7E5C] rounded-sm focus:ring-[#9B7E5C]">
+            <label for="link-checkbox" class="ms-2 text-sm font-medium text-[#090F41]">Remember me</label>
+          </div>
+          <a class="text-[#090F41] font-medium" routerLink="/forgetpassword">Forget Password?</a>
+        </div>
+
+        <!-- Submit Button -->
+        <button class="bg-[#8B5E35] w-[90%] rounded-full mx-auto py-2 text-white block">
+          Login 
+          @if (isLoading) {
+            <span><i class="fas fa-spin fa-spinner"></i></span>
+          }
+        </button>
+
+        @if (isSuccess) {
+          <p class="bg-[#090F41] text-white text-center mt-3 rounded px-6 py-3">{{ isSuccess }}</p>
+        }
+
+        @if (ErrorMsg) {
+          <p class="bg-[#9D9DAA] text-white text-center mt-3 rounded px-6 py-3">{{ ErrorMsg }}</p>
+        }
+
+        <!-- Additional Info -->
+        <p class="text-center mt-4 text-[#9D9DAA] text-[14px]">or continue with</p>
+        <p class="text-center mt-4 text-[#9D9DAA] text-[14px]">Don't have an account? <a routerLink="/register" class="text-[#8B5E35] font-bold">Sign up</a></p>
+      </form>
+    </div>
+
+    <!-- Image Section -->
+    <div class="w-full md:w-1/2">
+      <img src="/images/unsplash_Q-72wa9-7Dg.png" alt="Login Image" class="w-full h-full object-cover">
+    </div>
+  </div>
+</div>
+
