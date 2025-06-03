@@ -6,7 +6,7 @@ import { NotFoundComponent } from './feature/pages/not-found/not-found.component
 export const routes: Routes = 
 [
 
-    {path:'' ,redirectTo:"home" , pathMatch:'full'},
+    {path:'' ,redirectTo:"login" , pathMatch:'full'},
     {path:'' , component:AuthLayoutComponent , title:'Auth', children:[
         {
             path:'login' , loadComponent:()=>import('./feature/pages/login/login.component').then((c)=>c.LoginComponent) , title:'Login'
