@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { jwtDecode } from "jwt-decode";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class AuthService {
   constructor() { }
   private readonly http=inject (HttpClient)
 
-
+   userData:any=null;
   getLoginData(data:object):Observable<any>
   {
     return this.http.post(`https://ecommerce.routemisr.com/api/v1/auth/signin` , data)
@@ -22,13 +23,16 @@ export class AuthService {
 
 
 
-//   saveUserToken():void
-// {
-//   if(localStorage.getItem('usertoken')!==null)
-//   {
-//    this.userData=  jwtDecode (localStorage.getItem('usertoken')!)
-//   }
-// }
+  saveUserToken():void
+  {
+    if(localStorage.getItem('userToken')!==null)
+    {
+        this.userData=  jwtDecode(localStorage.getItem('userToken') !)
+    }
+  }
+
+
+
 
 
 

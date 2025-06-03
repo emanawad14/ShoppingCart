@@ -49,19 +49,18 @@ export class LoginComponent {
          
           setTimeout(() => {
 
-          //save token
-            localStorage.setItem('usertoken' ,res.token);
-            // this.authsService.saveUserToke();
-
-           
+          
             
 
-            //navigate to home
+           localStorage.setItem('userToken' , res.token)
+            
+           this.authsService.saveUserToken()
+           
             this.router.navigate(['/home']);
             this.ToastrService.success(res.message,"Go To home");
             
           },  300);
-             //navaguiate login
+            
         }
         this.isLoading=false;
         },
