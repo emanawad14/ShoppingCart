@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, HostListener, Input } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
@@ -12,13 +12,18 @@ export class NavbarComponent {
 
 
 
- isNavbarOpen: boolean = false;
+ 
+  scroll: boolean = false;
+  menuOpen: boolean = false;
 
-  toggleNavbar() {
-    this.isNavbarOpen = !this.isNavbarOpen;
+  @HostListener('window:scroll')
+  onScroll(): void {
+    this.scroll = window.scrollY > 0;
   }
 
-
+  toggleMenu(): void {
+    this.menuOpen = !this.menuOpen;
+  }
 
   
 }
