@@ -9,4 +9,16 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 })
 export class NavbarComponent {
  @Input() isLogin:boolean=true
+
+
+
+ isNavbarOpen: boolean = false;
+
+  toggleNavbar() {
+    this.isNavbarOpen = !this.isNavbarOpen;
+  }
+
+
+
+  
 }
