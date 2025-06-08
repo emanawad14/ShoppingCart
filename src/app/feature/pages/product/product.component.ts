@@ -6,10 +6,11 @@ import { FormsModule } from '@angular/forms';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { CartService } from '../../services/cart/cart.service';
 import { ToastrService } from 'ngx-toastr';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-product',
-  imports: [ FormsModule , SearchPipe,NgxPaginationModule ],
+  imports: [ FormsModule , SearchPipe,NgxPaginationModule , RouterLink ],
   templateUrl: './product.component.html',
   styleUrl: './product.component.scss'
 })

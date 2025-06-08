@@ -18,4 +18,12 @@ export class CategoryService {
   {
     return this.http.get(`https://ecommerce.routemisr.com/api/v1/subcategories`)
   }
+
+
+
+   getSpecificCategories(id: string): Observable<any> {
+    return this.http.get(
+      `https://ecommerce.routemisr.com/api/v1/categories/${id}`
+    );
+  }
 }

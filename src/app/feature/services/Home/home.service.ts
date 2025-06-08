@@ -14,4 +14,11 @@ export class HomeService {
   {
     return this.http.get(`https://ecommerce.routemisr.com/api/v1/products`)
   }
+
+
+
+
+  getSpecificProducts(id: string | null): Observable<any> {
+    return this.http.get(`https://ecommerce.routemisr.com/api/v1/products/${id}`);
+  }
 }

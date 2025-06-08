@@ -38,6 +38,7 @@
       >
         <div class="relative">
           <img
+          [routerLink]="['/CategoriesDetails', cat._id]"
             class="h-[230px] w-full object-contain rounded-t-xl"
             [src]="cat.image"
             alt="product image"

@@ -11,7 +11,7 @@ export const routes: Routes =
     
     {path:'' , component:AuthLayoutComponent , canActivate:[logedGuard] , title:'Auth', children:[
 
-        {path:'' ,redirectTo:"login" , pathMatch:'full'},
+        {path:'' ,redirectTo:"register" , pathMatch:'full'},
         {
             path:'login' , loadComponent:()=>import('./feature/pages/login/login.component').then((c)=>c.LoginComponent) , title:'Login'
         },
@@ -54,6 +54,13 @@ export const routes: Routes =
        
         {
             path:'allorders' , loadComponent:()=>import('./feature/pages/allorders/allorders.component').then((c)=>c.AllordersComponent) , title:'allOrders'
+        },
+        {
+            path:'details/:id' , loadComponent:()=>import('./feature/pages/details/details.component').then((c)=>c.DetailsComponent) , title:'details'
+        },
+       
+        {
+            path:'CategoriesDetails/:id' , loadComponent:()=>import('./feature/pages/category-details/category-details.component').then((c)=>c.CategoryDetailsComponent) , title:'category-details'
         },
        
         

@@ -150,9 +150,11 @@
       <div class="bg-white border border-gray-200 rounded shadow-sm dark:bg-gray-800 dark:border-gray-700 transition hover:shadow-md">
         <a class="block relative">
           <img
+
+          [routerLink]="['/details', item._id]"
             [src]="item.imageCover"
             alt="product image"
-            class="w-full h-[250px] object-contain rounded-t-lg"
+            class="w-full h-[250px] object-contain cursor-pointer rounded-t-lg"
           />
         </a>
 

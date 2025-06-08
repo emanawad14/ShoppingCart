@@ -6,10 +6,11 @@ import { FormsModule } from '@angular/forms';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { CartService } from '../../services/cart/cart.service';
 import { ToastrService } from 'ngx-toastr';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
-  imports: [ FormsModule , SearchPipe ,CarouselModule ],
+  imports: [ FormsModule , SearchPipe ,CarouselModule , RouterLink ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

@@ -3,10 +3,11 @@ import { CategoryService } from '../../services/cate/category.service';
 import { Icategory } from '../../interfaces/Cate/icategory';
 import { DatePipe } from '@angular/common';
 import { Sub } from '../../interfaces/SubCate/sub';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-services',
-  imports: [DatePipe],
+  imports: [DatePipe , RouterLink],
   templateUrl: './services.component.html',
   styleUrl: './services.component.scss'
 })

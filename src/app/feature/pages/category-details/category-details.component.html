@@ -1,0 +1,28 @@
+
+<section
+  class="mx-auto w-3/4  my-20 rounded bg-[rgba(247,211,211,0.5)] shadow p-4 z-20 sticky top-0"
+>
+
+<h2 class="text-center my-5 font-bold text-[30px]">Details of Category</h2>
+  <div class="grid md:grid-cols-2 gap-4 items-center">
+    <div>
+      <img
+        class="w-3/4 mx-auto rounded"
+        [src]="catigories.image"
+        [alt]="catigories.name"
+      />
+    </div>
+    <div>
+      <h3 class="text-xl md:text-4xl font-semibold">{{ catigories.name }}</h3>
+
+      
+      
+      <div class="flex flex-wrap gap-2 mt-2">
+       
+        <h4 class="text-xl md:text-3xl font-sans mt-2">{{catigories.updatedAt |date}} </h4>
+      </div>
+    </div>
+  </div>
+</section>
+
+

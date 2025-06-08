@@ -1,37 +1,41 @@
-
-
 <section class="py-10 px-4">
   <!-- Section Header -->
   <p class="mb-1 text-[#9B7E5C] text-center font-bold">Top Products</p>
-  <h1 class="text-center text-[24px] sm:text-[28px] md:text-[30px] font-bold text-[#090F41] py-3">
+  <h1 class="text-center text-2xl sm:text-3xl md:text-[30px] font-bold text-[#090F41] py-3 my-6">
     Top Picks For You!
   </h1>
 
-  <!-- Search Box -->
-  <div class="mb-6">
+  <!-- Search and Pagination -->
+  <div class="flex flex-col sm:flex-row justify-between items-center gap-4 mb-6">
     <input
       [(ngModel)]="test"
       type="search"
-      class="block w-full max-w-xl mx-auto px-4 py-3 text-sm text-[#090F41] border border-gray-300 rounded-full focus:ring-gray-600 focus:border-gray-400 placeholder:text-[#9B7E5C]"
+      class="w-full sm:w-1/2 px-4 py-3 text-sm text-[#090F41] border border-gray-300 rounded-full focus:ring-gray-600 focus:border-gray-400 placeholder:text-[#9B7E5C]"
       placeholder="Search by name..."
     />
+    <pagination-controls
+      (pageChange)="p = $event"
+    
+      class="text-[#090F41]"
+    ></pagination-controls>
   </div>
 
   <!-- Product Grid -->
-  <div class=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
     @for (item of products | search:test | paginate: { itemsPerPage: 8, currentPage: p }; track item._id) {
-      <div class=" bg-white border border-gray-200 rounded shadow-sm dark:bg-gray-800 dark:border-gray-700 transition ">
-       <a class="block relative overflow-hidden group">
-  <img
-    [src]="item.imageCover"
-    alt="product image"
-    class="w-full h-[250px] object-contain cursor-pointer rounded-t-lg transform group-hover:scale-105 transition-transform duration-300"
-  />
-</a>
+      <div class="bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 hover:shadow-md transition">
+        <a class="block relative overflow-hidden group">
+          <img
+          [routerLink]="['/details', item._id]"
+            [src]="item.imageCover"
+            alt="product image"
+            class="w-full h-[250px] cursor-pointer object-contain rounded-t-lg transform group-hover:scale-105 transition-transform duration-300"
+          />
+        </a>
 
         <div class="p-4">
-          <!-- Title -->
-          <h5 class="text-sm mb-2 text-[#090F41] font-bold dark:text-white">
+          <!-- Product Title -->
+          <h5 class="text-sm font-bold text-[#090F41] dark:text-white mb-2">
             {{ item.title.split(' ', 2).join(' ') }}
           </h5>
 
@@ -42,24 +46,20 @@
             </span>
           </div>
 
-          <!-- Price & Cart -->
+          <!-- Price & Add to Cart -->
           <div class="flex items-center justify-between">
             <span class="bg-yellow-100 text-yellow-800 text-xs font-bold px-3 py-1 rounded dark:bg-yellow-900 dark:text-yellow-300">
               ${{ item.price }}
             </span>
-            <span 
-             (click)="addCart(item._id)"
-            class="text-2xl text-[#8B5E35] hover:text-[#6b4b2a] dark:text-white cursor-pointer">
+            <span
+              (click)="addCart(item._id)"
+              class="text-2xl text-[#8B5E35] hover:text-[#6b4b2a] cursor-pointer"
+            >
               <i class="fa-solid fa-cart-plus"></i>
             </span>
           </div>
         </div>
       </div>
     }
-  </div>
-
-  <!-- Centered Pagination -->
-  <div class="container mx-auto mt-8 flex justify-center">
-    <pagination-controls (pageChange)="p = $event"></pagination-controls>
   </div>
 </section>
