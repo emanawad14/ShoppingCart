@@ -1,0 +1,97 @@
+
+<section class="w-full max-w-[800px] my-20 shadow bg-[#e9ecef] mx-auto rounded p-5">
+  <div class="container py-10 px-4 md:px-10 mb-5">
+    <h1 class="font-bold text-center text-[#090F41] text-xl md:text-[23px] mb-6">
+      Details Custom Order
+    </h1>
+
+    <form [formGroup]="checkoutForm" (ngSubmit)="PaymentOnline()">
+      <!-- User Details -->
+      <div class="mb-6">
+        <label for="details" class="block mb-2 text-sm font-medium text-gray-900">User details</label>
+        <input
+          formControlName="details"
+          type="text"
+          id="details"
+          class="bg-gray-50 border border-gray-300 text-gray-700 text-sm rounded-lg focus:ring-[#9B7E5C] focus:border-[#9B7E5C] block w-full p-2.5"
+        />
+        @let conteoldetails = checkoutForm.get('details');
+        @if (conteoldetails?.errors && conteoldetails?.touched) {
+          <div class="flex p-2 mt-4 text-sm text-white rounded-lg bg-[#8B5E35]" role="alert">
+            <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" ...></svg>
+            <div>
+              <ul class="mt-1.5 list-disc list-inside">
+                @if (conteoldetails?.getError('required')) {
+                  <li>details is required</li>
+                }
+              </ul>
+            </div>
+          </div>
+        }
+      </div>
+
+      <!-- City -->
+      <div class="mb-6">
+        <label for="city" class="block mb-2 text-sm font-medium text-gray-900">City</label>
+        <input
+          formControlName="city"
+          type="text"
+          id="city"
+          class="bg-gray-50 border border-gray-300 text-gray-700 text-sm rounded-lg focus:ring-[#9B7E5C] focus:border-[#9B7E5C] block w-full p-2.5"
+        />
+        @let controlcity = checkoutForm.get('city');
+        @if (controlcity?.errors && controlcity?.touched) {
+          <div class="flex p-2 mt-4 text-sm text-white rounded-lg bg-[#8B5E35]" role="alert">
+            <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" ...></svg>
+            <div>
+              <ul class="mt-1.5 list-disc list-inside">
+                @if (controlcity?.getError('required')) {
+                  <li>city is required</li>
+                }
+              </ul>
+            </div>
+          </div>
+        }
+      </div>
+
+      <!-- Phone -->
+      <div class="mb-6">
+        <label for="phone" class="block mb-2 text-sm font-medium text-gray-900">Phone</label>
+        <input
+          formControlName="phone"
+          type="tel"
+          id="phone"
+          class="bg-gray-50 border border-gray-300 text-gray-700 text-sm rounded-lg focus:ring-[#9B7E5C] focus:border-[#9B7E5C] block w-full p-2.5"
+        />
+        @let controlPhone = checkoutForm.get('phone');
+        @if (controlPhone?.errors && controlPhone?.touched) {
+          <div class="flex p-2 mt-4 text-sm text-white rounded-lg bg-[#8B5E35]" role="alert">
+            <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" ...></svg>
+            <div>
+              <ul class="mt-1.5 list-disc list-inside">
+                @if (controlPhone?.getError('required')) {
+                  <li>phone is required</li>
+                }
+                @else if (controlPhone?.getError('pattern')) {
+                  <li>phone is valid</li>
+                }
+              </ul>
+            </div>
+          </div>
+        }
+      </div>
+
+      <!-- Submit Button -->
+      <button
+        class="bg-[#8B5E35] w-full md:w-auto px-10 rounded-full py-2 text-white flex items-center justify-center gap-2"
+        type="submit"
+      >
+        Online Payment
+        <img src="/images/visa.png" class="w-[30px] inline-flex" alt="" />
+        @if (isLoading) {
+          <span><i class="fas fa-spin fa-spinner"></i></span>
+        }
+      </button>
+    </form>
+  </div>
+</section>

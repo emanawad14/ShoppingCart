@@ -4,6 +4,8 @@ import { IProducts } from '../../interfaces/Products/iproducts';
 import { SearchPipe } from '../../../core/pipes/search.pipe';
 import { FormsModule } from '@angular/forms';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { CartService } from '../../services/cart/cart.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-product',
@@ -19,7 +21,11 @@ export class ProductComponent {
     ngOnInit(): void {
         this.getAllproduct()
     }
-  private readonly homeService=inject(HomeService)
+  private readonly homeService=inject(HomeService);
+  private readonly cartservices=inject(CartService); 
+   private readonly ToastrService=inject(ToastrService);
+    
+    
   
   
   getAllproduct()
@@ -41,4 +47,31 @@ export class ProductComponent {
     )
   }
 
+
+
+
+
+
+
+
+  addCart(id:string):void
+{
+  this.cartservices.addProducttoCart(id).subscribe(
+    {
+      next:(res)=>
+      {
+        console.log(res);
+         this.ToastrService.success("Go To cart");
+        console.log('hellllllo');
+        
+      },
+      error:(err)=>
+      {
+        console.log(err);
+        
+
+      }
+    }
+  )
+}
 }

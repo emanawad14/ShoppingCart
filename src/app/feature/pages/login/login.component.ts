@@ -48,13 +48,14 @@ export class LoginComponent {
   
          
           setTimeout(() => {
-
+              
           
             
 
-           localStorage.setItem('userToken' , res.token)
-            
-           this.authsService.saveUserToken()
+           localStorage.setItem('userToken' , res.token);
+           this.authsService.saveUserToken();
+          
+           
            
             this.router.navigate(['/home']);
             this.ToastrService.success(res.message,"Go To home");
@@ -62,6 +63,8 @@ export class LoginComponent {
           },  300);
             
         }
+
+        
         this.isLoading=false;
         },
         error:(err :HttpErrorResponse)=>

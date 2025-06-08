@@ -48,6 +48,14 @@ export const routes: Routes =
             path:'cart' , loadComponent:()=>import('./feature/pages/cart/cart.component').then((c)=>c.CartComponent) , title:'cart'
         },
        
+        {
+            path:'checkOut/:id' , loadComponent:()=>import('./feature/pages/checkout/checkout.component').then((c)=>c.CheckoutComponent) , title:'checkOut'
+        },
+       
+        {
+            path:'allorders' , loadComponent:()=>import('./feature/pages/allorders/allorders.component').then((c)=>c.AllordersComponent) , title:'allOrders'
+        },
+       
         
        
         

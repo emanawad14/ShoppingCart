@@ -19,7 +19,7 @@
 
   <!-- Product Grid -->
   <div class=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-    @for (item of products | search:test | paginate: { itemsPerPage: 8, currentPage: p }; track item.id) {
+    @for (item of products | search:test | paginate: { itemsPerPage: 8, currentPage: p }; track item._id) {
       <div class=" bg-white border border-gray-200 rounded shadow-sm dark:bg-gray-800 dark:border-gray-700 transition ">
        <a class="block relative overflow-hidden group">
   <img
@@ -47,7 +47,9 @@
             <span class="bg-yellow-100 text-yellow-800 text-xs font-bold px-3 py-1 rounded dark:bg-yellow-900 dark:text-yellow-300">
               ${{ item.price }}
             </span>
-            <span class="text-2xl text-[#8B5E35] hover:text-[#6b4b2a] dark:text-white cursor-pointer">
+            <span 
+             (click)="addCart(item._id)"
+            class="text-2xl text-[#8B5E35] hover:text-[#6b4b2a] dark:text-white cursor-pointer">
               <i class="fa-solid fa-cart-plus"></i>
             </span>
           </div>

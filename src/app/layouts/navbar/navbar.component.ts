@@ -1,5 +1,6 @@
-import { Component, HostListener, Input } from '@angular/core';
+import { Component, HostListener, inject, Input } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { AuthService } from '../../feature/services/auth/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,6 +9,13 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
+
+   private readonly http=inject(AuthService);
+
+  hamada()
+  {
+    this.http.logOut()
+  }
  @Input() isLogin:boolean=true
 
 

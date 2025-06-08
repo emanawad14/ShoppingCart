@@ -4,6 +4,8 @@ import { IProducts } from '../../interfaces/Products/iproducts';
 import { SearchPipe } from '../../../core/pipes/search.pipe';
 import { FormsModule } from '@angular/forms';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
+import { CartService } from '../../services/cart/cart.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-home',
@@ -17,9 +19,14 @@ export class HomeComponent  implements OnInit{
 
   products:IProducts[]=[]
   ngOnInit(): void {
-      this.getAllproduct()
+      this.getAllproduct();
+      this.addCart
   }
-private readonly homeService=inject(HomeService)
+private readonly homeService=inject(HomeService);
+private readonly CartService=inject(CartService);  
+private readonly ToastrService=inject(ToastrService);
+  
+  
 
 
 getAllproduct()
@@ -41,6 +48,30 @@ getAllproduct()
   )
 }
 
+
+
+
+
+addCart(id:string):void
+{
+  this.CartService.addProducttoCart(id).subscribe(
+    {
+      next:(res)=>
+      {
+        console.log(res);
+         this.ToastrService.success("Go To cart");
+        console.log('hellllllo');
+        
+      },
+      error:(err)=>
+      {
+        console.log(err);
+        
+
+      }
+    }
+  )
+}
 
 customOptions: OwlOptions = {
   loop: true,
